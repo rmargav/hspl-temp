@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Conveyor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0056b3;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background-color: #fafafa;
+        }
+
+        legend {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-group label,
+        .radio-group label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #444;
+            text-decoration: underline;
+        }
+
+        /* New styling for the reference sketch */
+        .sketch-container {
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: #fff;
+            border-radius: 4px;
+        }
+
+        .sketch-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .sketch-caption {
+            font-size: 13px;
+            color: #555;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 columns */
+            gap: 8px 20px;
+            /* row gap, column gap */
+        }
+
+        .checkbox-group label {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Flexible Conveyor - Request Form</h2>
+
+        <form action="process_form.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="product_type" value="Flexible Conveyor">
+
+            <fieldset>
+                <legend>General Information</legend>
+                <div class="row">
+                    <div class="col form-group"><label>Date:</label><input type="date" name="date" required></div>
+                    <div class="col form-group"><label>Company:</label><input type="text" name="company" required></div>
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;"><label>Address:</label><input type="text"
+                        name="address"></div>
+                <div class="row">
+                    <div class="col form-group"><label>City:</label><input type="text" name="city"></div>
+                    <div class="col form-group"><label>State:</label><input type="text" name="state"></div>
+                    <div class="col form-group"><label>Zip:</label><input type="text" name="zip"></div>
+                </div>
+
+                <div class="section-title">Contact 1</div>
+                <div class="row">
+                    <div class="col form-group"><label>Name:</label><input type="text" name="contact1_name" required>
+                    </div>
+                    <div class="col form-group"><label>Phone:</label><input type="text" name="contact1_phone" required>
+                    </div>
+                    <div class="col form-group"><label>Fax:</label><input type="text" name="contact1_fax"></div>
+                    <div class="col form-group"><label>Email:</label><input type="email" name="contact1_email" required>
+                    </div>
+                </div>
+
+                <div class="section-title">Contact 2</div>
+                <div class="row">
+                    <div class="col form-group"><label>Name:</label><input type="text" name="contact2_name"></div>
+                    <div class="col form-group"><label>Phone:</label><input type="text" name="contact2_phone"></div>
+                    <div class="col form-group"><label>Fax:</label><input type="text" name="contact2_fax"></div>
+                    <div class="col form-group"><label>Email:</label><input type="email" name="contact2_email"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col form-group"><label>Location of Installation:</label><input type="text"
+                            name="installation_location"></div>
+                    <div class="col form-group"><label>Quotation Deadline:</label><input type="date"
+                            name="quotation_deadline"></div>
+                    <div class="col form-group"><label>Installation Target Date:</label><input type="date"
+                            name="installation_target_date"></div>
+                </div>
+
+                <div class="section-title">Project Status</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="project_status" value="Budgetary"> Budgetary</label>
+                    <label><input type="radio" name="project_status" value="Funded"> Funded</label>
+                    <label><input type="radio" name="project_status" value="Approved for purchase"> Approved for
+                        purchase</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Material Details</legend>
+                <div class="row">
+                    <div class="col form-group"><label>Common Name:</label><input type="text"
+                            name="material_common_name"></div>
+                    <div class="col form-group"><label>Trade Name:</label><input type="text" name="material_trade_name">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col inline">
+                        <label>Bulk Density</label>
+                        <input type="text" class="line-input" style="width:80px;">
+
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="densityUnit"> kg/cubic meter
+                            </label>
+
+                            <label>
+                                <input type="radio" name="densityUnit"> g/cc
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <label>Particle Size</label>
+                        <input type="text" class="line-input">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col form-group"><label>Temperature:</label><input type="text" name="temperature"></div>
+                    <div class="col form-group"><label>Moisture Content:</label><input type="text"
+                            name="moisture_content"></div>
+                </div>
+
+                <div class="section-title">Composition</div>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="composition[]" value="Powder"> Powder</label>
+                    <label><input type="checkbox" name="composition[]" value="Granule"> Granule</label>
+                    <label><input type="checkbox" name="composition[]" value="Fiber"> Fiber</label>
+                    <label><input type="checkbox" name="composition[]" value="Prill"> Prill</label>
+                    <label><input type="checkbox" name="composition[]" value="Pellet"> Pellet</label>
+                    <label><input type="checkbox" name="composition[]" value="Flake"> Flake</label>
+                </div>
+                <div class="form-group" style="margin-top: 10px;"><label>Other Composition:</label><input type="text"
+                        name="composition_other"></div>
+
+                <div class="section-title">Characteristics (Check all that apply)</div>
+
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="characteristics[]" value="Corrosive"> Corrosive</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Agglomerates"> Agglomerates</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Segregates"> Segregates</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Aerates"> Aerates</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Explosive"> Explosive</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Hygroscopic"> Hygroscopic</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Adhesive"> Adhesive</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Degrades"> Degrades</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Packs or smears"> Packs or
+                        smears</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Friable"> Friable</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Cohesive"> Cohesive</label>
+                    <label><input type="checkbox" name="characteristics[]" value="Toxic"> Toxic</label>
+                </div>
+
+                <div class="section-title">Abrasiveness</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="abrasiveness" value="Non-abrasive"> Non-abrasive</label>
+                    <label><input type="radio" name="abrasiveness" value="Mildly abrasive"> Mildly abrasive</label>
+                    <label><input type="radio" name="abrasiveness" value="Highly abrasive"> Highly abrasive</label>
+                </div>
+
+                <div class="section-title">Flowability</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="flowability" value="Very free flowing"> Very free flowing</label>
+                    <label><input type="radio" name="flowability" value="Free flowing"> Free flowing</label>
+                    <label><input type="radio" name="flowability" value="Sluggish"> Sluggish</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Environment</legend>
+                <div class="section-title">Atmospheric Conditions (Check all that apply)</div>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="environment[]" value="Indoor"> Indoor</label>
+                    <label><input type="checkbox" name="environment[]" value="Outdoor"> Outdoor</label>
+                    <label><input type="checkbox" name="environment[]" value="Corrosive"> Corrosive</label>
+                    <label><input type="checkbox" name="environment[]" value="Explosive"> Explosive</label>
+                    <label><input type="checkbox" name="environment[]" value="High temp"> High temp</label>
+                    <label><input type="checkbox" name="environment[]" value="Humid"> Humid</label>
+                    <label><input type="checkbox" name="environment[]" value="Dirty"> Dirty</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Conveying</legend>
+                <div class="row">
+                    <div class="col form-group"><label>Duty Cycle (Hours per day):</label><input type="number"
+                            name="duty_hours_per_day"></div>
+                    <div class="col form-group"><label>Duty Cycle (Days per week):</label><input type="number"
+                            name="duty_days_per_week"></div>
+                </div>
+
+                <!-- Rate -->
+                <div>
+                    <label>Rate:</label><br>
+
+                    <label>
+                        <input type="checkbox" name="rate_type[]" value="Continuous">
+                        Continuous
+                    </label>
+                </div>
+
+                <input type="text" name="rate_kg_per">
+                <label>kg per</label>
+
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="rate_unit" value="Hour">
+                        Hour
+                    </label>
+
+                    <label>
+                        <input type="radio" name="rate_unit" value="Minute">
+                        Minute
+                    </label>
+                </div>
+
+                <div>
+                    <label>
+                        <input type="checkbox" name="rate_type[]" value="Intermittent / Refill">
+                        Intermittent / Refill
+                    </label>
+                </div>
+
+                <label>Lbs. every</label>
+                <input type="text" name="rate_lbs_every">
+
+                <div>
+                    <label>
+                        <input type="checkbox" name="rate_type[]" value="Batch">
+                        Batch
+                    </label>
+                </div>
+
+                <label>Batch amount:</label>
+                <input type="text" name="batch_amount">
+
+                <div>
+                    <label>Time to deliver batch:</label>
+                    <input type="text" name="time_to_deliver_batch">
+                </div>
+
+                <div class="row">
+                    <div class="col form-group"><label>Discharge Height:</label><input type="text"
+                            name="discharge_height"></div>
+                    <div class="col form-group"><label>Horizontal Distance:</label><input type="text"
+                            name="horizontal_distance"></div>
+                </div>
+                <div class="row">
+                    <div class="col form-group"><label>Conveyor is fed by:</label><input type="text" name="fed_by">
+                    </div>
+                    <div class="col form-group"><label>Conveyor is feeding:</label><input type="text" name="feeding">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Conveyor Construction</legend>
+                <div class="section-title">Contact Surfaces</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="contact_surfaces" value="Carbon steel"> Carbon steel</label>
+                    <label><input type="radio" name="contact_surfaces" value="#304 Stainless steel"> #304 Stainless
+                        steel</label>
+                    <label><input type="radio" name="contact_surfaces" value="#316L Stainless steel"> #316L Stainless
+                        steel</label>
+                </div>
+
+                <div class="section-title">Non-contact Surfaces</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="non_contact_surfaces" value="Carbon steel"> Carbon steel</label>
+                    <label><input type="radio" name="non_contact_surfaces" value="#304 Stainless steel"> #304 Stainless
+                        steel</label>
+                    <label><input type="radio" name="non_contact_surfaces" value="#316L Stainless steel"> #316L
+                        Stainless steel</label>
+                </div>
+
+                <div class="section-title">Internal Finish</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="internal_finish" value="Standard"> Standard (primary mill
+                        finish)</label>
+                    <label><input type="radio" name="internal_finish" value="Food Grade"> Food Grade (to 120
+                        grit)</label>
+                    <label><input type="radio" name="internal_finish" value="Sanitary Dairy"> Sanitary/Dairy (to 150
+                        grit)</label>
+                    <label><input type="radio" name="internal_finish" value="Dairy">Dairy</label>
+                </div>
+
+                <div class="section-title">Conveyor Casing</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="conveyor_casing" value="Flexible polyethylene"> Flexible
+                        polyethylene</label>
+                    <label><input type="radio" name="conveyor_casing" value="Carbon steel"> Carbon steel</label>
+                    <label><input type="radio" name="conveyor_casing" value="Stainless steel"> Stainless steel</label>
+                </div>
+
+                <div>
+                    <strong>Motor specifications:</strong>
+
+                    <input type="text" name="motor_volt">
+                    <label>Volt/3 Phase/</label>
+
+                    <input type="text" name="motor_hertz">
+                    <label>Hertz</label>
+                </div>
+
+                <div class="radio-group">
+                    <label>
+                        <input type="checkbox" name="motor_type[]" value="TEFC">
+                        TEFC
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="motor_type[]" value="Washdown Duty">
+                        Washdown Duty
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="motor_type[]" value="Inverter Duty">
+                        Inverter Duty
+                    </label>
+                </div>
+
+                <div>
+                    <label>
+                        <input type="checkbox" name="motor_type[]" value="Explosion Proof">
+                        Explosion Proof:
+                    </label>
+                </div>
+
+                <label>Class:</label>
+                <input type="text" name="explosion_class">
+
+                <label>Group:</label>
+                <input type="text" name="explosion_group">
+
+                <label>Division:</label>
+                <input type="text" name="explosion_division">
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Hopper / Inlet Options</legend>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="hopper_options[]" value=".08 M3 Hopper"> .08 M³ Hopper</label>
+                    <label><input type="checkbox" name="hopper_options[]" value=".22 M3 Hopper"> .22 M³ Hopper</label>
+                    <label><input type="checkbox" name="hopper_options[]" value=".34 M3 Hopper"> .34 M³ Hopper</label>
+                    <label><input type="checkbox" name="hopper_options[]" value="Flanged inlet"> Flanged inlet</label>
+                    <label><input type="checkbox" name="hopper_options[]" value="Vibrator"> Vibrator</label>
+                    <label><input type="checkbox" name="hopper_options[]" value="Agitator"> Agitator</label>
+                    <label><input type="checkbox" name="hopper_options[]" value="Level sensors"> Level sensors</label>
+                    <label><input type="checkbox" name="hopper_options[]" value="Air pads"> Air pads</label>
+                    <label><input type="checkbox" name="hopper_options[]" value="Mobile base"> Mobile base</label>
+                    <label><input type="checkbox" name="hopper_options[]" value="Mobile hopper"> Mobile hopper</label>
+                </div>
+                <div class="form-group" style="margin-top: 10px;"><label>Other Hopper Option:</label><input type="text"
+                        name="hopper_other"></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Conveyer Controls</legend>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="controls[]" value="Fixed speed reversing"> Fixed speed
+                        reversing</label>
+                    <label><input type="checkbox" name="controls[]" value="Variable speed reversing"> Variable speed
+                        reversing</label>
+                </div>
+                <div class="form-group" style="margin-top: 10px;"><label>Other Control:</label><input type="text"
+                        name="control_other"></div>
+                <div class="form-group" style="margin-top: 10px;"><label>NEMA Rating:</label><input type="text"
+                        name="nema_rating"></div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Hopper Mounted Dust Collection Hood</legend>
+                <div class="radio-group">
+                    <label><input type="radio" name="dust_hood" value="Self contained"> Self contained dust collection
+                        hood</label>
+                    <label><input type="radio" name="dust_hood" value="Dust hood only"> Dust hood only</label>
+                    <label><input type="radio" name="dust_hood" value="None"> None</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Configuration</legend>
+                <div class="row">
+                    <div class="col form-group"><label>Select From Chart=</label><input type="text" name="config">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group"><label>X=</label><input type="text" name="config_x">
+                    </div>
+                    <div class="col form-group"><label>Y=</label><input type="text" name="config_y"></div>
+                    <div class="col form-group"><label>If H: X1=</label><input type="text" name="config_x1"></div>
+                    <div class="col form-group"><label>If H: Y1=</label><input type="text" name="config_y1"></div>
+                </div>
+                <div class="sketch-container">
+                    <img src="./images/flexible-conveyer-sketch.JPG" alt="Flexible Conveyor Dimensions Sketch" class="sketch-image">
+                    <p class="sketch-caption">Reference Sketch for Dimensions (X, Y, X1, Y1, CL)</p>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Additional Requirements</legend>
+                <div class="form-group">
+                    <label>Describe Your Process:</label>
+                    <textarea name="process_description" rows="5"
+                        placeholder="Indicate clearances and obstructions so we can select the most practical solution..."></textarea>
+                </div>
+
+                <div class="form-group" style="margin-top: 25px;">
+                    <label>Upload Installation Sketch (Plan/Side Elevation):</label>
+                    <input type="file" name="installation_sketch" accept=".jpg,.png,.pdf,.doc,.docx">
+                    <small style="color: #666;">Show plan and/or side elevation with dimensions. Indicate preferred
+                        conveyor path with all possible alternatives.</small>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk Bag Unloader Quotation Form</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #0056b3; margin-bottom: 30px; border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
+        fieldset { border: 1px solid #ccc; border-radius: 5px; padding: 20px; margin-bottom: 25px; background-color: #fafafa; }
+        legend { background-color: #0056b3; color: #fff; padding: 5px 15px; border-radius: 3px; font-weight: bold; }
+        .row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; }
+        .col { flex: 1; min-width: 200px; }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-weight: bold; margin-bottom: 5px; font-size: 14px; }
+        input[type="text"], input[type="email"], input[type="date"], input[type="number"], select, textarea { 
+            padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 100%; box-sizing: border-box; 
+        }
+        .checkbox-group, .radio-group { display: flex; flex-wrap: wrap; gap: 15px; }
+        .checkbox-group label, .radio-group label { font-weight: normal; display: flex; align-items: center; gap: 5px; cursor: pointer; }
+        .btn-submit { display: block; width: 100%; padding: 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        .btn-submit:hover { background-color: #218838; }
+        .section-title { font-size: 16px; font-weight: bold; margin-top: 15px; margin-bottom: 10px; color: #444; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Bulk Bag Unloader - Quotation Request Form</h2>
+
+    <form action="process_form.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="product_type" value="Bulk Bag Unloader">
+
+        <fieldset>
+            <legend>General Information</legend>
+            <div class="row">
+                <div class="col form-group"><label>Date:</label><input type="date" name="date" required></div>
+                <div class="col form-group"><label>Company:</label><input type="text" name="company" required></div>
+            </div>
+            <div class="form-group" style="margin-bottom: 15px;"><label>Address:</label><input type="text" name="address"></div>
+            <div class="row">
+                <div class="col form-group"><label>City:</label><input type="text" name="city"></div>
+                <div class="col form-group"><label>State:</label><input type="text" name="state"></div>
+                <div class="col form-group"><label>Zip:</label><input type="text" name="zip"></div>
+            </div>
+
+            <div class="section-title">Contact 1</div>
+            <div class="row">
+                <div class="col form-group"><label>Name:</label><input type="text" name="contact1_name" required></div>
+                <div class="col form-group"><label>Phone:</label><input type="text" name="contact1_phone" required></div>
+                <div class="col form-group"><label>Fax:</label><input type="text" name="contact1_fax"></div>
+                <div class="col form-group"><label>Email:</label><input type="email" name="contact1_email" required></div>
+            </div>
+
+            <div class="section-title">Contact 2</div>
+            <div class="row">
+                <div class="col form-group"><label>Name:</label><input type="text" name="contact2_name"></div>
+                <div class="col form-group"><label>Phone:</label><input type="text" name="contact2_phone"></div>
+                <div class="col form-group"><label>Fax:</label><input type="text" name="contact2_fax"></div>
+                <div class="col form-group"><label>Email:</label><input type="email" name="contact2_email"></div>
+            </div>
+
+            <div class="row">
+                <div class="col form-group"><label>Location of Installation:</label><input type="text" name="installation_location"></div>
+                <div class="col form-group"><label>Quotation Deadline:</label><input type="date" name="quotation_deadline"></div>
+                <div class="col form-group"><label>Installation Target Date:</label><input type="date" name="installation_target_date"></div>
+            </div>
+
+            <div class="section-title">Project Status</div>
+            <div class="radio-group">
+                <label><input type="radio" name="project_status" value="Budgetary"> Budgetary</label>
+                <label><input type="radio" name="project_status" value="Funded"> Funded</label>
+                <label><input type="radio" name="project_status" value="Approved for purchase"> Approved for purchase</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Material Details</legend>
+            <div class="row">
+                <div class="col form-group"><label>Common Name:</label><input type="text" name="material_common_name"></div>
+                <div class="col form-group"><label>Bulk Density (kg/m³ or g/cc):</label><input type="text" name="bulk_density"></div>
+            </div>
+            <div class="row">
+                <div class="col form-group"><label>Temperature:</label><input type="text" name="temperature"></div>
+                <div class="col form-group"><label>Moisture Content:</label><input type="text" name="moisture_content"></div>
+            </div>
+
+            <div class="section-title">Flowability</div>
+            <div class="radio-group">
+                <label><input type="radio" name="flowability" value="Very free flowing"> Very free flowing</label>
+                <label><input type="radio" name="flowability" value="Free flowing"> Free flowing</label>
+                <label><input type="radio" name="flowability" value="Sluggish (Rat-holes/Bridges)"> Sluggish (Rat-holes/Bridges)</label>
+            </div>
+
+            <div class="section-title">Characteristics (Check all that apply)</div>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="characteristics[]" value="Corrosive"> Corrosive</label>
+                <label><input type="checkbox" name="characteristics[]" value="Explosive"> Explosive</label>
+                <label><input type="checkbox" name="characteristics[]" value="Hygroscopic"> Hygroscopic</label>
+                <label><input type="checkbox" name="characteristics[]" value="Agglomerates"> Agglomerates (Clumping)</label>
+                <label><input type="checkbox" name="characteristics[]" value="Toxic"> Toxic / Hazardous</label>
+                <label><input type="checkbox" name="characteristics[]" value="Highly Dusty"> Highly Dusty</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Bulk Bag (FIBC) Specifications</legend>
+            <div class="row">
+                <div class="col form-group"><label>Bag Weight (Max):</label><input type="text" name="bag_weight_max" placeholder="e.g., 1000 kg, 2000 lbs"></div>
+                <div class="col form-group"><label>Bag Weight (Min):</label><input type="text" name="bag_weight_min" placeholder="e.g., 500 kg, 1000 lbs"></div>
+            </div>
+            
+            <div class="section-title">Bag Dimensions</div>
+            <div class="row">
+                <div class="col form-group"><label>Width:</label><input type="text" name="bag_width"></div>
+                <div class="col form-group"><label>Depth:</label><input type="text" name="bag_depth"></div>
+                <div class="col form-group"><label>Height (including loops):</label><input type="text" name="bag_height"></div>
+            </div>
+
+            <div class="row" style="margin-top: 15px;">
+                <div class="col form-group"><label>Discharge Spout Diameter:</label><input type="text" name="spout_diameter"></div>
+                <div class="col form-group"><label>Discharge Spout Length:</label><input type="text" name="spout_length"></div>
+            </div>
+            
+            <div class="row" style="margin-top: 15px;">
+                <div class="col form-group"><label>Unloading Rate (Bags per Hour):</label><input type="number" name="bags_per_hour"></div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Unloader Configuration</legend>
+            
+            <div class="section-title">Method of Loading Bag into Unloader</div>
+            <div class="radio-group">
+                <label><input type="radio" name="loading_method" value="Forklift Loaded (Lifting Frame)"> Forklift Loaded (Using Lifting Frame)</label>
+                <label><input type="radio" name="loading_method" value="Integral Hoist & Trolley"> Integral Hoist & Trolley</label>
+                <label><input type="radio" name="loading_method" value="Customer Hoist"> Customer's Existing Hoist</label>
+            </div>
+
+            <div class="section-title">Bag Discharge Controls & Options</div>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="unloader_options[]" value="Bag Massage Paddles"> Bag Massage Paddles (for poor flow)</label>
+                <label><input type="checkbox" name="unloader_options[]" value="Iris Valve"> Iris Valve (to tie off partially empty bags)</label>
+                <label><input type="checkbox" name="unloader_options[]" value="Dust Collection Stub"> Dust Collection Stub / Port</label>
+                <label><input type="checkbox" name="unloader_options[]" value="Loss-in-Weight Load Cells"> Loss-in-Weight Load Cells (Batching)</label>
+                <label><input type="checkbox" name="unloader_options[]" value="Vibratory Pan / Hopper"> Vibratory Pan / Hopper</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Downstream Feeding Configuration</legend>
+            <div class="row">
+                <div class="col form-group"><label>Unloader is Feeding To:</label><input type="text" name="feeding_to" placeholder="e.g., Flexible Screw Conveyor, Rotary Valve, Mixer"></div>
+            </div>
+            <div class="form-group" style="margin-top: 15px;">
+                <label>Surge Hopper Capacity Required (if any):</label>
+                <input type="text" name="surge_hopper_capacity" placeholder="e.g., 10 cubic feet, 300 Liters">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Construction & Electrical Specifications</legend>
+            
+            <div class="section-title">Construction Materials (Product Contact)</div>
+            <div class="radio-group">
+                <label><input type="radio" name="contact_surfaces" value="Carbon Steel"> Carbon Steel</label>
+                <label><input type="radio" name="contact_surfaces" value="304 Stainless Steel"> 304 Stainless Steel</label>
+                <label><input type="radio" name="contact_surfaces" value="316L Stainless Steel"> 316L Stainless Steel</label>
+            </div>
+
+            <div class="section-title">Frame Material (Non-Contact)</div>
+            <div class="radio-group">
+                <label><input type="radio" name="frame_material" value="Carbon Steel (Painted)"> Carbon Steel (Painted)</label>
+                <label><input type="radio" name="frame_material" value="Stainless Steel"> Stainless Steel</label>
+            </div>
+            
+            <div class="section-title">Electrical Specifications (For Hoist/Massagers)</div>
+            <div class="row">
+                <div class="col form-group"><label>Volt:</label><input type="text" name="motor_volt"></div>
+                <div class="col form-group"><label>Phase:</label><input type="text" name="motor_phase"></div>
+                <div class="col form-group"><label>Hertz:</label><input type="text" name="motor_hertz"></div>
+            </div>
+            
+            <div class="row" style="margin-top: 15px;">
+                <div class="col form-group"><label>Explosion Proof Environment?</label><input type="text" name="explosion_proof_details" placeholder="If yes, specify Class/Div/Group"></div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Additional Requirements</legend>
+            <div class="form-group">
+                <label>Describe Your Process:</label>
+                <textarea name="process_description" rows="5" placeholder="Indicate ceiling height restrictions, forklift access limitations, or process flow details..."></textarea>
+            </div>
+
+            <div class="form-group" style="margin-top: 25px;">
+                <label>Upload Installation Sketch / Clearances (Plan/Side Elevation):</label>
+                <input type="file" name="installation_sketch" accept=".jpg,.png,.pdf,.doc,.docx">
+                <small style="color: #666;">Please show available ceiling height and footprint dimensions.</small>
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn-submit">Submit Quotation Request</button>
+    </form>
+</div>
+
+</body>
+</html>

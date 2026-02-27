@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFQ BBU - Bulk Bag Unloader Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; }
+        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #eee; }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-section { margin-bottom: 30px; padding: 15px; background: #f9f9f9; border-radius: 5px; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input[type="text"], input[type="email"], input[type="number"], textarea, select { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        .checkbox-group { margin: 10px 0; }
+        .checkbox-group label { display: inline; font-weight: normal; margin-right: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+        table, th, td { border: 1px solid #bbb; }
+        th, td { padding: 10px; text-align: center; }
+        .submit-btn { background-color: #27ae60; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; margin-top: 20px; }
+        .submit-btn:hover { background-color: #219150; }
+    </style>
+</head>
+<body>
+
+    <h1>Request for Quotation: Bulk Bag Unloader</h1>
+    
+    <form action="https://formspree.io/f/YOUR_FORM_ENDPOINT" method="POST">
+
+        <div class="form-section">
+            <h2>Contact Information</h2>
+            <div class="grid-container">
+                <div>
+                    <label>Date</label>
+                    <input type="text" name="date" placeholder="YYYY-MM-DD">
+                    <label>Company</label>
+                    <input type="text" name="company" required>
+                    <label>Address</label>
+                    <textarea name="address" rows="2"></textarea>
+                    <label>City/State/Zip</label>
+                    <input type="text" name="location_details">
+                </div>
+                <div>
+                    <label>Contact Name 1</label>
+                    <input type="text" name="contact_1">
+                    <label>Contact Name 2</label>
+                    <input type="text" name="contact_2">
+                    <label>Phone / Fax</label>
+                    <input type="text" name="phone_fax">
+                    <label>Email Address</label>
+                    <input type="email" name="email" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Project Status</h2>
+            <div class="grid-container">
+                <div>
+                    <label>Location of Installation</label>
+                    <input type="text" name="install_location">
+                    <label>Quotation Deadline</label>
+                    <input type="text" name="quote_deadline">
+                </div>
+                <div class="checkbox-group">
+                    <label>Status:</label><br>
+                    <input type="checkbox" name="status" value="Budgetary"> Budgetary
+                    <input type="checkbox" name="status" value="Funded"> Funded
+                    <input type="checkbox" name="status" value="Approved"> Approved for Purchase
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Bulk Bag Data</h2>
+            <label>Ceiling height where unloader will be located?</label>
+            <input type="text" name="ceiling_height">
+
+            <div class="checkbox-group">
+                <label>To empty completely, the bag must be:</label><br>
+                <input type="checkbox" name="emptying_method" value="Vibrated"> Vibrated
+                <input type="checkbox" name="emptying_method" value="Massaged"> Massaged
+                <input type="checkbox" name="emptying_method" value="Beaten"> Beaten
+                <input type="checkbox" name="emptying_method" value="Free"> Bag empties freely
+            </div>
+
+            <label>Is the bag lined?</label>
+            <select name="bag_lined">
+                <option value="No">No</option>
+                <option value="Yes-Fitted">Yes - Fitted</option>
+                <option value="Yes-Tubular">Yes - Tubular</option>
+            </select>
+
+            <h3>Bag Dimensions (Refer to Diagram A-F)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ref</th>
+                        <th>Bag 1</th>
+                        <th>Bag 2</th>
+                        <th>Bag 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>A (Loop Height)</td><td><input type="text" name="bag1_a"></td><td><input type="text" name="bag2_a"></td><td><input type="text" name="bag3_a"></td></tr>
+                    <tr><td>B (Bag Height)</td><td><input type="text" name="bag1_b"></td><td><input type="text" name="bag2_b"></td><td><input type="text" name="bag3_b"></td></tr>
+                    <tr><td>C (Width)</td><td><input type="text" name="bag1_c"></td><td><input type="text" name="bag2_c"></td><td><input type="text" name="bag3_c"></td></tr>
+                    <tr><td>D (Depth)</td><td><input type="text" name="bag1_d"></td><td><input type="text" name="bag2_d"></td><td><input type="text" name="bag3_d"></td></tr>
+                    <tr><td>E (Spout Diam)</td><td><input type="text" name="bag1_e"></td><td><input type="text" name="bag2_e"></td><td><input type="text" name="bag3_e"></td></tr>
+                    <tr><td>F (Spout Length)</td><td><input type="text" name="bag1_f"></td><td><input type="text" name="bag2_f"></td><td><input type="text" name="bag3_f"></td></tr>
+                    <tr><td>Weight</td><td><input type="text" name="bag1_weight"></td><td><input type="text" name="bag2_weight"></td><td><input type="text" name="bag3_weight"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-section">
+            <h2>Material Characteristics</h2>
+            <div class="grid-container">
+                <div>
+                    <label>Common Name</label>
+                    <input type="text" name="mat_common_name">
+                    <label>Bulk Density (kg/m³)</label>
+                    <input type="text" name="bulk_density">
+                    <label>Flowability</label>
+                    <select name="flowability">
+                        <option value="Very Free">Very Free Flowing</option>
+                        <option value="Free">Free Flowing</option>
+                        <option value="Sluggish">Sluggish</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Composition</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" name="comp" value="Powder"> Powder
+                        <input type="checkbox" name="comp" value="Granule"> Granule
+                        <input type="checkbox" name="comp" value="Pellet"> Pellet
+                        <input type="checkbox" name="comp" value="Flake"> Flake
+                    </div>
+                    <label>Abrasiveness</label>
+                    <select name="abrasive">
+                        <option value="Non">Non Abrasive</option>
+                        <option value="Mild">Mildly Abrasive</option>
+                        <option value="High">Highly Abrasive</option>
+                    </select>
+                </div>
+            </div>
+            <label>Additional Characteristics (Check all that apply):</label>
+            <div class="checkbox-group">
+                <input type="checkbox" name="char" value="Corrosive"> Corrosive
+                <input type="checkbox" name="char" value="Explosive"> Explosive
+                <input type="checkbox" name="char" value="Sticky"> Sticky
+                <input type="checkbox" name="char" value="Toxic"> Toxic
+                <input type="checkbox" name="char" value="Hygroscopic"> Hygroscopic
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Environment & Operating Requirements</h2>
+            <label>Atmospheric Conditions:</label>
+            <div class="checkbox-group">
+                <input type="checkbox" name="env" value="Outdoor"> Outdoor
+                <input type="checkbox" name="env" value="Corrosive"> Corrosive
+                <input type="checkbox" name="env" value="High Humidity"> High Humidity
+                <input type="checkbox" name="env" value="Explosion Proof"> Explosion Proof
+            </div>
+            
+            <div class="grid-container">
+                <div>
+                    <label>Duty Cycle (Hrs/Day)</label>
+                    <input type="text" name="duty_hrs">
+                    <label>Continuous Delivery (kg/hr)</label>
+                    <input type="text" name="cont_rate">
+                </div>
+                <div>
+                    <label>Batch Amount (kg)</label>
+                    <input type="text" name="batch_amt">
+                    <label>Time to Deliver Batch</label>
+                    <input type="text" name="batch_time">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Construction & Utilities</h2>
+            <div class="grid-container">
+                <div>
+                    <label>Frame Material</label>
+                    <select name="frame_material">
+                        <option value="Carbon Steel">Carbon Steel</option>
+                        <option value="304 SS">#304 Stainless Steel</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Suspension Method</label>
+                    <select name="suspension">
+                        <option value="Forklift">Forklift Transport Frame</option>
+                        <option value="Hoist">Hoist and Trolley</option>
+                    </select>
+                </div>
+            </div>
+            <label>Power Available</label>
+            <input type="text" name="power" placeholder="Volt / 3 Phase / Hertz">
+        </div>
+
+        <div class="form-section">
+            <h2>Describe Your Process</h2>
+            <textarea name="process_description" rows="5" placeholder="Explain how the unloader fits into your workflow..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Request for Quotation</button>
+
+    </form>
+</body>
+</html>

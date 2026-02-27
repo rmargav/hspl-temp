@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSPL Equipment Inquiry Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Equipment Inquiry Form</h2>
+    <form action="process.php" method="POST">
+        
+        <div class="form-group">
+            <label for="service_select">Which equipment do you need?</label>
+            <select name="service_type" id="service_select" required>
+                <option value="">-- Select Equipment --</option>
+                <option value="bbu">Bulk Bag Unloader</option>
+                <option value="lump_breaker">Lump Breaker</option>
+                <option value="tubular">Tubular Drag Conveyor</option>
+                </select>
+        </div>
+
+        <div class="shared-section">
+            <h3>Company Information</h3>
+            <div class="form-group">
+                <label>Company Name:</label>
+                <input type="text" name="company" required>
+            </div>
+            <div class="form-group">
+                <label>Contact Name:</label>
+                <input type="text" name="contact1" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address:</label>
+                <input type="email" name="email" required>
+            </div>
+        </div>
+
+        <div id="form_bbu" class="service-form" style="display: none;">
+            <h3>Bulk Bag Unloader Details</h3>
+            <div class="form-group">
+                <label>What is the ceiling height where unloader will be located?</label> <input type="text" name="bbu_ceiling_height">
+            </div>
+            <div class="form-group">
+                <label>To empty completely; the bag must be:</label> <select name="bbu_empty_method">
+                    <option value="Vibrated">Vibrated</option> <option value="Massaged">Massaged</option> <option value="Beaten">Beaten</option> <option value="Bag empties freely">Bag empties freely</option> </select>
+            </div>
+        </div>
+
+        <div id="form_lump_breaker" class="service-form" style="display: none;">
+            <h3>Lump Breaker Details</h3>
+            <div class="form-group">
+                <label>Largest lump size:</label> <input type="text" name="lump_largest_size">
+            </div>
+            <div class="form-group">
+                <label>Rate hardness on a scale 1-10 (1= drop on floor, 10 it takes a hammer):</label> <input type="number" min="1" max="10" name="lump_hardness">
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Inquiry</button>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
