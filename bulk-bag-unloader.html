@@ -1,209 +1,633 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bulk Bag Unloader Quotation Form</title>
+    <title>Bulk Bag Unloader Form</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; padding: 20px; }
-        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h2 { text-align: center; color: #0056b3; margin-bottom: 30px; border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
-        fieldset { border: 1px solid #ccc; border-radius: 5px; padding: 20px; margin-bottom: 25px; background-color: #fafafa; }
-        legend { background-color: #0056b3; color: #fff; padding: 5px 15px; border-radius: 3px; font-weight: bold; }
-        .row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; }
-        .col { flex: 1; min-width: 200px; }
-        .form-group { display: flex; flex-direction: column; }
-        label { font-weight: bold; margin-bottom: 5px; font-size: 14px; }
-        input[type="text"], input[type="email"], input[type="date"], input[type="number"], select, textarea { 
-            padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 100%; box-sizing: border-box; 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
         }
-        .checkbox-group, .radio-group { display: flex; flex-wrap: wrap; gap: 15px; }
-        .checkbox-group label, .radio-group label { font-weight: normal; display: flex; align-items: center; gap: 5px; cursor: pointer; }
-        .btn-submit { display: block; width: 100%; padding: 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
-        .btn-submit:hover { background-color: #218838; }
-        .section-title { font-size: 16px; font-weight: bold; margin-top: 15px; margin-bottom: 10px; color: #444; text-decoration: underline; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0056b3;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background-color: #fafafa;
+        }
+
+        legend {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-group label,
+        .radio-group label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #444;
+            text-decoration: underline;
+        }
+
+        /* New styling for the reference sketch */
+        .sketch-container {
+            margin-top: 20px;
+            text-align: center;
+            /* border: 1px solid #ddd; */
+            padding: 10px;
+            /* background: #fff; */
+            border-radius: 4px;
+        }
+
+        .sketch-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .sketch-caption {
+            font-size: 13px;
+            color: #555;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 columns */
+            gap: 8px 20px;
+            /* row gap, column gap */
+        }
+
+        .checkbox-group label {
+            display: block;
+        }
+
+        /* ===== Responsive Fix ===== */
+
+        /* Tablets */
+        @media (max-width: 992px) {
+            .checkbox-group {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 576px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .col {
+                min-width: 100%;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+                /* Stack vertically */
+            }
+
+            .checkbox-group label {
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="date"],
+            input[type="number"],
+            select,
+            textarea {
+                font-size: 16px;
+                /* Prevents zoom on iPhone */
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Bulk Bag Unloader - Quotation Request Form</h2>
+    <div class="container">
+        <h2>Bulk Bag Unloader - Request Form</h2>
 
-    <form action="process_form.php" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="product_type" value="Bulk Bag Unloader">
+        <form action="process_form.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="product_type" value="Bulk Bag Unloader">
 
-        <fieldset>
-            <legend>General Information</legend>
-            <div class="row">
-                <div class="col form-group"><label>Date:</label><input type="date" name="date" required></div>
-                <div class="col form-group"><label>Company:</label><input type="text" name="company" required></div>
-            </div>
-            <div class="form-group" style="margin-bottom: 15px;"><label>Address:</label><input type="text" name="address"></div>
-            <div class="row">
-                <div class="col form-group"><label>City:</label><input type="text" name="city"></div>
-                <div class="col form-group"><label>State:</label><input type="text" name="state"></div>
-                <div class="col form-group"><label>Zip:</label><input type="text" name="zip"></div>
-            </div>
+            <fieldset>
+                <legend>General Information</legend>
+                <div class="row">
+                    <div class="col form-group"><label>Date:</label><input type="date" name="date" required></div>
+                    <div class="col form-group"><label>Company:</label><input type="text" name="company" required></div>
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;"><label>Address:</label><input type="text"
+                        name="address"></div>
+                <div class="row">
+                    <div class="col form-group"><label>City:</label><input type="text" name="city"></div>
+                    <div class="col form-group"><label>State:</label><input type="text" name="state"></div>
+                    <div class="col form-group"><label>Zip:</label><input type="text" name="zip"></div>
+                </div>
 
-            <div class="section-title">Contact 1</div>
-            <div class="row">
-                <div class="col form-group"><label>Name:</label><input type="text" name="contact1_name" required></div>
-                <div class="col form-group"><label>Phone:</label><input type="text" name="contact1_phone" required></div>
-                <div class="col form-group"><label>Fax:</label><input type="text" name="contact1_fax"></div>
-                <div class="col form-group"><label>Email:</label><input type="email" name="contact1_email" required></div>
-            </div>
+                <div class="section-title">Contact 1</div>
+                <div class="row">
+                    <div class="col form-group"><label>Name:</label><input type="text" name="contact1_name" required>
+                    </div>
+                    <div class="col form-group"><label>Phone:</label><input type="text" name="contact1_phone" required>
+                    </div>
+                    <div class="col form-group"><label>Fax:</label><input type="text" name="contact1_fax"></div>
+                    <div class="col form-group"><label>Email:</label><input type="email" name="contact1_email" required>
+                    </div>
+                </div>
 
-            <div class="section-title">Contact 2</div>
-            <div class="row">
-                <div class="col form-group"><label>Name:</label><input type="text" name="contact2_name"></div>
-                <div class="col form-group"><label>Phone:</label><input type="text" name="contact2_phone"></div>
-                <div class="col form-group"><label>Fax:</label><input type="text" name="contact2_fax"></div>
-                <div class="col form-group"><label>Email:</label><input type="email" name="contact2_email"></div>
-            </div>
+                <div class="section-title">Contact 2</div>
+                <div class="row">
+                    <div class="col form-group"><label>Name:</label><input type="text" name="contact2_name"></div>
+                    <div class="col form-group"><label>Phone:</label><input type="text" name="contact2_phone"></div>
+                    <div class="col form-group"><label>Fax:</label><input type="text" name="contact2_fax"></div>
+                    <div class="col form-group"><label>Email:</label><input type="email" name="contact2_email"></div>
+                </div>
 
-            <div class="row">
-                <div class="col form-group"><label>Location of Installation:</label><input type="text" name="installation_location"></div>
-                <div class="col form-group"><label>Quotation Deadline:</label><input type="date" name="quotation_deadline"></div>
-                <div class="col form-group"><label>Installation Target Date:</label><input type="date" name="installation_target_date"></div>
-            </div>
+                <div class="row">
+                    <div class="col form-group"><label>Location of Installation:</label><input type="text"
+                            name="installation_location"></div>
+                    <div class="col form-group"><label>Quotation Deadline:</label><input type="date"
+                            name="quotation_deadline"></div>
+                    <div class="col form-group"><label>Installation Target Date:</label><input type="date"
+                            name="installation_target_date"></div>
+                </div>
 
-            <div class="section-title">Project Status</div>
-            <div class="radio-group">
-                <label><input type="radio" name="project_status" value="Budgetary"> Budgetary</label>
-                <label><input type="radio" name="project_status" value="Funded"> Funded</label>
-                <label><input type="radio" name="project_status" value="Approved for purchase"> Approved for purchase</label>
-            </div>
-        </fieldset>
+                <div class="section-title">Project Status</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="project_status" value="Budgetary"> Budgetary</label>
+                    <label><input type="radio" name="project_status" value="Funded"> Funded</label>
+                    <label><input type="radio" name="project_status" value="Approved for purchase"> Approved for
+                        purchase</label>
+                </div>
+            </fieldset>
 
-        <fieldset>
-            <legend>Material Details</legend>
-            <div class="row">
-                <div class="col form-group"><label>Common Name:</label><input type="text" name="material_common_name"></div>
-                <div class="col form-group"><label>Bulk Density (kg/m³ or g/cc):</label><input type="text" name="bulk_density"></div>
-            </div>
-            <div class="row">
-                <div class="col form-group"><label>Temperature:</label><input type="text" name="temperature"></div>
-                <div class="col form-group"><label>Moisture Content:</label><input type="text" name="moisture_content"></div>
-            </div>
+            <fieldset>
+                <legend>Bulk Bag Data</legend>
 
-            <div class="section-title">Flowability</div>
-            <div class="radio-group">
-                <label><input type="radio" name="flowability" value="Very free flowing"> Very free flowing</label>
-                <label><input type="radio" name="flowability" value="Free flowing"> Free flowing</label>
-                <label><input type="radio" name="flowability" value="Sluggish (Rat-holes/Bridges)"> Sluggish (Rat-holes/Bridges)</label>
-            </div>
+                <div class="form-group">
+                    <label>What is the ceiling height where unloader will be located?</label>
+                    <input type="text" name="ceiling_height">
+                </div>
 
-            <div class="section-title">Characteristics (Check all that apply)</div>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="characteristics[]" value="Corrosive"> Corrosive</label>
-                <label><input type="checkbox" name="characteristics[]" value="Explosive"> Explosive</label>
-                <label><input type="checkbox" name="characteristics[]" value="Hygroscopic"> Hygroscopic</label>
-                <label><input type="checkbox" name="characteristics[]" value="Agglomerates"> Agglomerates (Clumping)</label>
-                <label><input type="checkbox" name="characteristics[]" value="Toxic"> Toxic / Hazardous</label>
-                <label><input type="checkbox" name="characteristics[]" value="Highly Dusty"> Highly Dusty</label>
-            </div>
-        </fieldset>
+                <div class="form-group">
+                    <label>To empty completely; the bag must be:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="empty_method[]" value="Vibrated"> Vibrated</label>
+                        <label><input type="checkbox" name="empty_method[]" value="Massaged"> Massaged</label>
+                        <label><input type="checkbox" name="empty_method[]" value="Beaten"> Beaten</label>
+                        <label><input type="checkbox" name="empty_method[]" value="Bag empties freely"> Bag empties
+                            freely</label>
+                    </div>
+                </div>
 
-        <fieldset>
-            <legend>Bulk Bag (FIBC) Specifications</legend>
-            <div class="row">
-                <div class="col form-group"><label>Bag Weight (Max):</label><input type="text" name="bag_weight_max" placeholder="e.g., 1000 kg, 2000 lbs"></div>
-                <div class="col form-group"><label>Bag Weight (Min):</label><input type="text" name="bag_weight_min" placeholder="e.g., 500 kg, 1000 lbs"></div>
-            </div>
+                <div class="form-group">
+                    <label>Is the bag lined?</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="bag_lined_no"> No</label>
+                        <label><input type="checkbox" name="bag_lined_yes"> Yes - Liner type: <input type="text"
+                                name="liner_type" placeholder="(Fitted or Tubular?)"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Provide dimensions and weight of each bag.</label>
+                    <div class="row">
+                        <div class="col">
+                            <table border="1" width="100%" cellspacing="0" cellpadding="8"
+                                style="text-align: center; background: #fff;">
+                                <thead style="background-color: #f2f2f2;">
+                                    <tr>
+                                        <th></th>
+                                        <th>Bag 1</th>
+                                        <th>Bag 2</th>
+                                        <th>Bag 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>A</strong></td>
+                                        <td><input type="text" name="bag1_a"></td>
+                                        <td><input type="text" name="bag2_a"></td>
+                                        <td><input type="text" name="bag3_a"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>B</strong></td>
+                                        <td><input type="text" name="bag1_b"></td>
+                                        <td><input type="text" name="bag2_b"></td>
+                                        <td><input type="text" name="bag3_b"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>C</strong></td>
+                                        <td><input type="text" name="bag1_c"></td>
+                                        <td><input type="text" name="bag2_c"></td>
+                                        <td><input type="text" name="bag3_c"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>D</strong></td>
+                                        <td><input type="text" name="bag1_d"></td>
+                                        <td><input type="text" name="bag2_d"></td>
+                                        <td><input type="text" name="bag3_d"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>E</strong></td>
+                                        <td><input type="text" name="bag1_e"></td>
+                                        <td><input type="text" name="bag2_e"></td>
+                                        <td><input type="text" name="bag3_e"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>F</strong></td>
+                                        <td><input type="text" name="bag1_f"></td>
+                                        <td><input type="text" name="bag2_f"></td>
+                                        <td><input type="text" name="bag3_f"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Weight</strong></td>
+                                        <td><input type="text" name="bag1_weight"></td>
+                                        <td><input type="text" name="bag2_weight"></td>
+                                        <td><input type="text" name="bag3_weight"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col sketch-container">
+                            <img src="./images/bulk-bag-unloader-sketch-removebg-preview.png"
+                                alt="Bulk Bag Diagram (A-F)" class="sketch-image" style="width: 60%;">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Material</legend>
+
+                <div class="form-group">
+                    <label>Common Name</label>
+                    <input type="text" name="material_common_name">
+                </div>
+
+                <div class="form-group">
+                    <label>Trade Name</label>
+                    <input type="text" name="material_trade_name">
+                </div>
+
+                <div class="form-group">
+                    <label>Particle Size</label>
+                    <input type="text" name="particle_size">
+                </div>
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Bulk Density (kg/m&sup3;):</label>
+                        <input type="text" name="bulk_density">
+                    </div>
+                    <div class="col form-group">
+                        <label>Temperature:</label>
+                        <input type="text" name="temperature">
+                    </div>
+                    <div class="col form-group">
+                        <label>Moisture content:</label>
+                        <input type="text" name="moisture_content">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Angle of repose (&deg;):</label>
+                        <input type="text" name="angle_of_repose">
+                    </div>
+                    <div class="col form-group">
+                        <label>Flowability:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="flowability[]" value="Very free flowing"> Very free
+                                flowing</label>
+                            <label><input type="checkbox" name="flowability[]" value="Free flowing"> Free
+                                flowing</label>
+                            <label><input type="checkbox" name="flowability[]" value="Sluggish"> Sluggish</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Composition:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="composition[]" value="Powder"> Powder</label>
+                        <label><input type="checkbox" name="composition[]" value="Granule"> Granule</label>
+                        <label><input type="checkbox" name="composition[]" value="Fiber"> Fiber</label>
+                        <label><input type="checkbox" name="composition[]" value="Prill"> Prill</label>
+                        <label><input type="checkbox" name="composition[]" value="Pellet"> Pellet</label>
+                        <label><input type="checkbox" name="composition[]" value="Flake"> Flake</label>
+                        <label><input type="checkbox" name="composition[]" value="Other"> Other: <input type="text"
+                                name="composition_other_text"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Abrasiveness:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="abrasiveness" value="Non abrasive"> Non abrasive</label>
+                        <label><input type="checkbox" name="abrasiveness" value="Mildly abrasive"> Mildly
+                            abrasive</label>
+                        <label><input type="checkbox" name="abrasiveness" value="Highly abrasive"> Highly
+                            abrasive</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Characteristics (Check all that apply):</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="characteristics[]" value="Dry"> Dry</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Corrosive"> Corrosive</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Abrasive"> Abrasive</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Fluffy"> Fluffy</label>
+
+                        <label><input type="checkbox" name="characteristics[]" value="Flaky"> Flaky</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Wet"> Wet</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Explosive"> Explosive</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Powdery"> Powdery</label>
+
+                        <label><input type="checkbox" name="characteristics[]" value="Granular"> Granular</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Sticky"> Sticky</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Toxic"> Toxic</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Hygroscopic"> Hygroscopic</label>
+
+                        <label><input type="checkbox" name="characteristics[]" value="Friable"> Friable</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Other"> Other: <input type="text"
+                                name="characteristics_other_text"></label>
+                    </div>
+                </div>
+            </fieldset>
             
-            <div class="section-title">Bag Dimensions</div>
-            <div class="row">
-                <div class="col form-group"><label>Width:</label><input type="text" name="bag_width"></div>
-                <div class="col form-group"><label>Depth:</label><input type="text" name="bag_depth"></div>
-                <div class="col form-group"><label>Height (including loops):</label><input type="text" name="bag_height"></div>
-            </div>
+            <fieldset>
+    <legend>Environment</legend>
+    <div class="form-group">
+        <label>Atmospheric conditions (check all that apply)</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="atmospheric[]" value="Outdoor"> Outdoor</label>
+            <label><input type="checkbox" name="atmospheric[]" value="Corrosive"> Corrosive</label>
+            <label><input type="checkbox" name="atmospheric[]" value="Explosive"> Explosive</label>
+            <label><input type="checkbox" name="atmospheric[]" value="High humidity"> High humidity</label>
+            <label><input type="checkbox" name="atmospheric[]" value="High temperature"> High temperature</label>
+            <label><input type="checkbox" name="atmospheric[]" value="Dirty"> Dirty</label>
+        </div>
+    </div>
+</fieldset>
 
-            <div class="row" style="margin-top: 15px;">
-                <div class="col form-group"><label>Discharge Spout Diameter:</label><input type="text" name="spout_diameter"></div>
-                <div class="col form-group"><label>Discharge Spout Length:</label><input type="text" name="spout_length"></div>
-            </div>
-            
-            <div class="row" style="margin-top: 15px;">
-                <div class="col form-group"><label>Unloading Rate (Bags per Hour):</label><input type="number" name="bags_per_hour"></div>
-            </div>
-        </fieldset>
+<fieldset>
+    <legend>Operating Requirements</legend>
+    <div class="row">
+        <div class="col form-group">
+            <label>Duty cycle:</label>
+                <div class="row">
+                    <div class="col form-group"><label></label><input type="number"
+                            name="duty_hours_per_day"  placeholder="Hours per day"></div>
+                    <div class="col form-group"><label></label><input type="number"
+                            name="duty_days_per_week" placeholder="Days per week"></div>
+                </div>
+        </div>
+    </div>
 
-        <fieldset>
-            <legend>Unloader Configuration</legend>
-            
-            <div class="section-title">Method of Loading Bag into Unloader</div>
-            <div class="radio-group">
-                <label><input type="radio" name="loading_method" value="Forklift Loaded (Lifting Frame)"> Forklift Loaded (Using Lifting Frame)</label>
-                <label><input type="radio" name="loading_method" value="Integral Hoist & Trolley"> Integral Hoist & Trolley</label>
-                <label><input type="radio" name="loading_method" value="Customer Hoist"> Customer's Existing Hoist</label>
+    <div class="form-group">
+        <label>Mode:</label>
+        <div style="margin-bottom: 10px;">
+            <label><input type="checkbox" name="mode_continuous"> Continuous / Non-stop delivery at</label>
+            <input type="text" name="continuous_kg_per_hour" placeholder="kg per hour"> 
+        </div>
+        
+        <div>
+            <label><input type="checkbox" name="mode_intermittent"> Intermittent / Batch</label>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col form-group">
+                    <label>Batch amount:</label>
+                    <input type="text" name="batch_amount">
+                </div>
+                <div class="col form-group">
+                    <label>Time to deliver batch:</label>
+                    <input type="text" name="time_to_deliver_batch">
+                </div>
             </div>
-
-            <div class="section-title">Bag Discharge Controls & Options</div>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="unloader_options[]" value="Bag Massage Paddles"> Bag Massage Paddles (for poor flow)</label>
-                <label><input type="checkbox" name="unloader_options[]" value="Iris Valve"> Iris Valve (to tie off partially empty bags)</label>
-                <label><input type="checkbox" name="unloader_options[]" value="Dust Collection Stub"> Dust Collection Stub / Port</label>
-                <label><input type="checkbox" name="unloader_options[]" value="Loss-in-Weight Load Cells"> Loss-in-Weight Load Cells (Batching)</label>
-                <label><input type="checkbox" name="unloader_options[]" value="Vibratory Pan / Hopper"> Vibratory Pan / Hopper</label>
-            </div>
-        </fieldset>
-
-        <fieldset>
-            <legend>Downstream Feeding Configuration</legend>
-            <div class="row">
-                <div class="col form-group"><label>Unloader is Feeding To:</label><input type="text" name="feeding_to" placeholder="e.g., Flexible Screw Conveyor, Rotary Valve, Mixer"></div>
-            </div>
-            <div class="form-group" style="margin-top: 15px;">
-                <label>Surge Hopper Capacity Required (if any):</label>
-                <input type="text" name="surge_hopper_capacity" placeholder="e.g., 10 cubic feet, 300 Liters">
-            </div>
-        </fieldset>
-
-        <fieldset>
-            <legend>Construction & Electrical Specifications</legend>
-            
-            <div class="section-title">Construction Materials (Product Contact)</div>
-            <div class="radio-group">
-                <label><input type="radio" name="contact_surfaces" value="Carbon Steel"> Carbon Steel</label>
-                <label><input type="radio" name="contact_surfaces" value="304 Stainless Steel"> 304 Stainless Steel</label>
-                <label><input type="radio" name="contact_surfaces" value="316L Stainless Steel"> 316L Stainless Steel</label>
-            </div>
-
-            <div class="section-title">Frame Material (Non-Contact)</div>
-            <div class="radio-group">
-                <label><input type="radio" name="frame_material" value="Carbon Steel (Painted)"> Carbon Steel (Painted)</label>
-                <label><input type="radio" name="frame_material" value="Stainless Steel"> Stainless Steel</label>
-            </div>
-            
-            <div class="section-title">Electrical Specifications (For Hoist/Massagers)</div>
-            <div class="row">
-                <div class="col form-group"><label>Volt:</label><input type="text" name="motor_volt"></div>
-                <div class="col form-group"><label>Phase:</label><input type="text" name="motor_phase"></div>
-                <div class="col form-group"><label>Hertz:</label><input type="text" name="motor_hertz"></div>
-            </div>
-            
-            <div class="row" style="margin-top: 15px;">
-                <div class="col form-group"><label>Explosion Proof Environment?</label><input type="text" name="explosion_proof_details" placeholder="If yes, specify Class/Div/Group"></div>
-            </div>
-        </fieldset>
-
-        <fieldset>
-            <legend>Additional Requirements</legend>
             <div class="form-group">
-                <label>Describe Your Process:</label>
-                <textarea name="process_description" rows="5" placeholder="Indicate ceiling height restrictions, forklift access limitations, or process flow details..."></textarea>
+                <label>Idle time between batches:</label>
+                <input type="text" name="idle_time_between_batches">
             </div>
+        </div>
+    </div>
 
-            <div class="form-group" style="margin-top: 25px;">
-                <label>Upload Installation Sketch / Clearances (Plan/Side Elevation):</label>
-                <input type="file" name="installation_sketch" accept=".jpg,.png,.pdf,.doc,.docx">
-                <small style="color: #666;">Please show available ceiling height and footprint dimensions.</small>
+    <div class="form-group">
+        <label>Dust containment:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="dust_containment" value="Internal required"> Internal required</label>
+            <label><input type="checkbox" name="dust_containment" value="External collection available"> External collection available</label>
+            <label><input type="checkbox" name="dust_containment" value="None"> None</label>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Construction</legend>
+    <div class="row">
+        <div class="col form-group">
+            <label>Frame:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="frame[]" value="Carbon Steel"> Carbon Steel</label>
+                <label><input type="checkbox" name="frame[]" value="#304 Stainless Steel"> #304 Stainless Steel</label>
+                <label><input type="checkbox" name="frame[]" value="Finish"> Finish: <input type="text" name="frame_finish"></label>
             </div>
-        </fieldset>
+        </div>
+    </div>
 
-        <button type="submit" class="btn-submit">Submit Quotation Request</button>
-    </form>
-</div>
+    <div class="row">
+        <div class="col form-group">
+            <label>Material contact:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="material_contact[]" value="Carbon Steel"> Carbon Steel</label>
+                <label><input type="checkbox" name="material_contact[]" value="#304 Stainless Steel"> #304 Stainless Steel</label>
+                <label><input type="checkbox" name="material_contact[]" value="Finish"> Finish: <input type="text" name="material_contact_finish"></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Bag suspension method:</label>
+        <div style="margin-left: 20px;">
+            <label style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;"><input type="checkbox" name="bag_suspension[]" value="Forklift transport frame"> Forklift transport frame</label>
+            <label style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;"><input type="checkbox" name="bag_suspension[]" value="Hoist and Trolley"> Hoist and Trolley</label>
+            
+            <div style="margin-left: 30px;">
+                <label style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;"><input type="checkbox" name="hoist_type[]" value="Electric hoist"> Electric hoist</label>
+                <label style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;"><input type="checkbox" name="hoist_type[]" value="Air hoist"> Air hoist</label>
+            </div>
+            
+            <label style="display: flex; align-items: center; gap: 5px; margin-bottom: 5px;"><input type="checkbox" name="bag_suspension[]" value="Half-Frame"> Half-Frame</label>
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Available Utilities</legend>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Power (Volt / 3 Phase):</label>
+                        <input type="text" name="plant_service_volt">
+                    </div>
+                    <div class="col form-group">
+                        <label>Hertz:</label>
+                        <input type="text" name="plant_service_hertz">
+                    </div>
+                </div>
+
+                   <div class="row">
+                    <div class="col form-group">
+                        <label>Air (CFM):</label>
+                        <input type="text" name="air_cfm">
+                    </div>
+                    <div class="col form-group">
+                        <label>Air (PSI):</label>
+                        <input type="text" name="air_psi">
+                    </div>
+                </div>
+
+    <div class="form-group">
+        <label>Environment:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="utilities_env[]" value="4"> 4</label>
+            <label><input type="checkbox" name="utilities_env[]" value="4X"> 4X</label>
+            <label><input type="checkbox" name="utilities_env[]" value="Explosion Proof"> Explosion Proof -List Class, Group & Division: <input type="text" name="utilities_explosion_proof_details"></label>
+        </div>
+    </div>
+</fieldset>
+
+            <fieldset>
+                <legend>Additional Requirements</legend>
+                <div class="form-group">
+                    <label>Describe Your Process:</label>
+                    <textarea name="process_description" rows="5"
+                        placeholder=""></textarea>
+                </div>
+
+                <div class="form-group" style="margin-top: 25px;">
+                    <label>Upload Installation Sketch / Clearances (Plan/Side Elevation):</label>
+                    <input type="file" name="installation_sketch" accept=".jpg,.png,.pdf,.doc,.docx">
+                    <small style="color: #666;">Please show available ceiling height and footprint dimensions.</small>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
 
 </body>
+
 </html>
