@@ -275,7 +275,7 @@
             </fieldset>
 
             <fieldset>
-                <legend>Material Details</legend>
+                <legend>Material</legend>
                 <div class="row">
                     <div class="col form-group"><label>Common Name:</label><input type="text"
                             name="material_common_name"></div>
@@ -284,24 +284,17 @@
                 </div>
 
                 <div class="row">
-                    <div class="col inline">
+                    <div class="col form-group">
                         <label>Bulk Density</label>
-                        <input type="text" class="line-input" style="width:80px;">
-
-                        <div class="radio-group">
-                            <label>
-                                <input type="radio" name="densityUnit"> kg/cubic meter
-                            </label>
-
-                            <label>
-                                <input type="radio" name="densityUnit"> g/cc
-                            </label>
+                        <div class="checkbox-group">
+                            <input type="text" name="bulk_density">
+                            <label><input type="radio" name="density_unit[]" value="g/cc"> g/cc</label>
+                            <label><input type="radio" name="density_unit[]" value="kg/m3"> kg/m³</label>
                         </div>
                     </div>
-
-                    <div class="col">
+                    <div class="col form-group">
                         <label>Particle Size</label>
-                        <input type="text" class="line-input">
+                        <input type="text" name="particle_size">
                     </div>
                 </div>
 
@@ -334,7 +327,7 @@
                     <label><input type="checkbox" name="characteristics[]" value="Hygroscopic"> Hygroscopic</label>
                     <label><input type="checkbox" name="characteristics[]" value="Adhesive"> Adhesive</label>
                     <label><input type="checkbox" name="characteristics[]" value="Degrades"> Degrades</label>
-                    <label><input type="checkbox" name="characteristics[]" value="Packs or smears"> Packs or
+                    <label><input type="checkbox" name="characteristics[]" value="Packs-or-smears"> Packs or
                         smears</label>
                     <label><input type="checkbox" name="characteristics[]" value="Friable"> Friable</label>
                     <label><input type="checkbox" name="characteristics[]" value="Cohesive"> Cohesive</label>
