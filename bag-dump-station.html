@@ -1,205 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bag Dump Station Quotation Form</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; padding: 20px; }
-        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h2 { text-align: center; color: #0056b3; margin-bottom: 30px; border-bottom: 2px solid #0056b3; padding-bottom: 10px; }
-        fieldset { border: 1px solid #ccc; border-radius: 5px; padding: 20px; margin-bottom: 25px; background-color: #fafafa; }
-        legend { background-color: #0056b3; color: #fff; padding: 5px 15px; border-radius: 3px; font-weight: bold; }
-        .row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; }
-        .col { flex: 1; min-width: 200px; }
-        .form-group { display: flex; flex-direction: column; }
-        label { font-weight: bold; margin-bottom: 5px; font-size: 14px; }
-        input[type="text"], input[type="email"], input[type="date"], input[type="number"], select, textarea { 
-            padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 100%; box-sizing: border-box; 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
         }
-        .checkbox-group, .radio-group { display: flex; flex-wrap: wrap; gap: 15px; }
-        .checkbox-group label, .radio-group label { font-weight: normal; display: flex; align-items: center; gap: 5px; cursor: pointer; }
-        .btn-submit { display: block; width: 100%; padding: 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
-        .btn-submit:hover { background-color: #218838; }
-        .section-title { font-size: 16px; font-weight: bold; margin-top: 15px; margin-bottom: 10px; color: #444; text-decoration: underline; }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0056b3;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background-color: #fafafa;
+        }
+
+        legend {
+            background-color: #0056b3;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-group label,
+        .radio-group label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            color: #444;
+            text-decoration: underline;
+        }
+
+        /* New styling for the reference sketch */
+        .sketch-container {
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: #fff;
+            border-radius: 4px;
+        }
+
+        .sketch-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .sketch-caption {
+            font-size: 13px;
+            color: #555;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 columns */
+            gap: 8px 20px;
+            /* row gap, column gap */
+        }
+
+        .checkbox-group label {
+            display: block;
+        }
+
+        /* ===== Responsive Fix ===== */
+
+        /* Tablets */
+        @media (max-width: 992px) {
+            .checkbox-group {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 576px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .col {
+                min-width: 100%;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+                /* Stack vertically */
+            }
+
+            .checkbox-group label {
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="date"],
+            input[type="number"],
+            select,
+            textarea {
+                font-size: 16px;
+                /* Prevents zoom on iPhone */
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Bag Dump Station - Quotation Request Form</h2>
+    <div class="container">
+        <h2>Bag Dump Station - Request Form</h2>
 
-    <form action="process_form.php" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="product_type" value="Bag Dump Station">
+        <form action="process_form.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="product_type" value="Bag Dump Station">
 
-<fieldset>
-            <legend>General Information</legend>
-            <div class="row">
-                <div class="col form-group"><label>Date:</label><input type="date" name="date" required></div>
-                <div class="col form-group"><label>Company:</label><input type="text" name="company" required></div>
-            </div>
-            <div class="form-group" style="margin-bottom: 15px;"><label>Address:</label><input type="text" name="address"></div>
-            <div class="row">
-                <div class="col form-group"><label>City:</label><input type="text" name="city"></div>
-                <div class="col form-group"><label>State:</label><input type="text" name="state"></div>
-                <div class="col form-group"><label>Zip:</label><input type="text" name="zip"></div>
-            </div>
+            <fieldset>
+                <legend>General Information</legend>
+                <div class="row">
+                    <div class="col form-group"><label>Date:</label><input type="date" name="date" required></div>
+                    <div class="col form-group"><label>Company:</label><input type="text" name="company" required></div>
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;"><label>Address:</label><input type="text"
+                        name="address"></div>
+                <div class="row">
+                    <div class="col form-group"><label>City:</label><input type="text" name="city"></div>
+                    <div class="col form-group"><label>State:</label><input type="text" name="state"></div>
+                    <div class="col form-group"><label>Zip:</label><input type="text" name="zip"></div>
+                </div>
 
-            <div class="section-title">Contact 1</div>
-            <div class="row">
-                <div class="col form-group"><label>Name:</label><input type="text" name="contact1_name" required></div>
-                <div class="col form-group"><label>Phone:</label><input type="text" name="contact1_phone" required></div>
-                <div class="col form-group"><label>Fax:</label><input type="text" name="contact1_fax"></div>
-                <div class="col form-group"><label>Email:</label><input type="email" name="contact1_email" required></div>
-            </div>
+                <div class="section-title">Contact 1</div>
+                <div class="row">
+                    <div class="col form-group"><label>Name:</label><input type="text" name="contact1_name" required>
+                    </div>
+                    <div class="col form-group"><label>Phone:</label><input type="text" name="contact1_phone" required>
+                    </div>
+                    <div class="col form-group"><label>Fax:</label><input type="text" name="contact1_fax"></div>
+                    <div class="col form-group"><label>Email:</label><input type="email" name="contact1_email" required>
+                    </div>
+                </div>
 
-            <div class="section-title">Contact 2</div>
-            <div class="row">
-                <div class="col form-group"><label>Name:</label><input type="text" name="contact2_name"></div>
-                <div class="col form-group"><label>Phone:</label><input type="text" name="contact2_phone"></div>
-                <div class="col form-group"><label>Fax:</label><input type="text" name="contact2_fax"></div>
-                <div class="col form-group"><label>Email:</label><input type="email" name="contact2_email"></div>
-            </div>
+                <div class="section-title">Contact 2</div>
+                <div class="row">
+                    <div class="col form-group"><label>Name:</label><input type="text" name="contact2_name"></div>
+                    <div class="col form-group"><label>Phone:</label><input type="text" name="contact2_phone"></div>
+                    <div class="col form-group"><label>Fax:</label><input type="text" name="contact2_fax"></div>
+                    <div class="col form-group"><label>Email:</label><input type="email" name="contact2_email"></div>
+                </div>
 
-            <div class="row">
-                <div class="col form-group"><label>Location of Installation:</label><input type="text" name="installation_location"></div>
-                <div class="col form-group"><label>Quotation Deadline:</label><input type="date" name="quotation_deadline"></div>
-                <div class="col form-group"><label>Installation Target Date:</label><input type="date" name="installation_target_date"></div>
-            </div>
+                <div class="row">
+                    <div class="col form-group"><label>Location of Installation:</label><input type="text"
+                            name="installation_location"></div>
+                    <div class="col form-group"><label>Quotation Deadline:</label><input type="date"
+                            name="quotation_deadline"></div>
+                    <div class="col form-group"><label>Installation Target Date:</label><input type="date"
+                            name="installation_target_date"></div>
+                </div>
 
-            <div class="section-title">Project Status</div>
-            <div class="radio-group">
-                <label><input type="radio" name="project_status" value="Budgetary"> Budgetary</label>
-                <label><input type="radio" name="project_status" value="Funded"> Funded</label>
-                <label><input type="radio" name="project_status" value="Approved for purchase"> Approved for purchase</label>
-            </div>
-        </fieldset>
+                <div class="section-title">Project Status</div>
+                <div class="radio-group">
+                    <label><input type="radio" name="project_status" value="Budgetary"> Budgetary</label>
+                    <label><input type="radio" name="project_status" value="Funded"> Funded</label>
+                    <label><input type="radio" name="project_status" value="Approved for purchase"> Approved for
+                        purchase</label>
+                </div>
+            </fieldset>
 
+            <fieldset>
+                <legend>Material</legend>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Common Name</label>
+                        <input type="text" name="material_common_name">
+                    </div>
+                    <div class="col form-group">
+                        <label>Trade Name</label>
+                        <input type="text" name="material_trade_name">
+                    </div>
+                </div>
 
-        <fieldset>
-            <legend>Material Details</legend>
-            <div class="row">
-                <div class="col form-group"><label>Common Name:</label><input type="text" name="material_common_name"></div>
-                <div class="col form-group"><label>Trade Name:</label><input type="text" name="material_trade_name"></div>
-            </div>
-            <div class="row">
-                <div class="col form-group"><label>Bulk Density (kg/m³ or g/cc):</label><input type="text" name="bulk_density"></div>
-                <div class="col form-group"><label>Particle Size:</label><input type="text" name="particle_size"></div>
-                <div class="col form-group"><label>Temperature:</label><input type="text" name="temperature"></div>
-                <div class="col form-group"><label>Moisture Content:</label><input type="text" name="moisture_content"></div>
-                
-            </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Bulk Density</label>
+                        <input type="text" name="bulk_density">
+                    </div>
+                    <div class="col form-group">
+                        <label>Particle Size</label>
+                        <input type="text" name="particle_size">
+                    </div>
+                </div>
 
-            <div class="section-title">Characteristics (Check all that apply)</div>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="characteristics[]" value="Corrosive"> Corrosive</label>
-                <label><input type="checkbox" name="characteristics[]" value="Explosive"> Explosive</label>
-                <label><input type="checkbox" name="characteristics[]" value="Hygroscopic"> Hygroscopic</label>
-                <label><input type="checkbox" name="characteristics[]" value="Agglomerates"> Agglomerates</label>
-                <label><input type="checkbox" name="characteristics[]" value="Toxic"> Toxic / Hazardous</label>
-                <label><input type="checkbox" name="characteristics[]" value="Dusty"> Highly Dusty</label>
-            </div>
-        </fieldset>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Temperature</label>
+                        <input type="text" name="temperature">
+                    </div>
+                    <div class="col form-group">
+                        <label>Moisture Content</label>
+                        <input type="text" name="moisture_content">
+                    </div>
+                </div>
 
-        <fieldset>
-            <legend>Bag Handling Specifications</legend>
-            <div class="row">
-                <div class="col form-group"><label>Bag Weight (kg or lbs):</label><input type="text" name="bag_weight"></div>
-                <div class="col form-group"><label>Bag Dimensions (L x W x H):</label><input type="text" name="bag_dimensions"></div>
-            </div>
-            
-            <div class="row">
-                <div class="col form-group"><label>Dump Rate (Bags per Hour):</label><input type="number" name="bags_per_hour"></div>
-                <div class="col form-group"><label>Dump Rate (Bags per Shift):</label><input type="number" name="bags_per_shift"></div>
-            </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Abrasiveness:</label>
+                        <div class="radio-group">
+                            <label><input type="checkbox" name="abrasiveness" value="Non abrasive"> Non abrasive</label>
+                            <label><input type="checkbox" name="abrasiveness" value="Mildly abrasive"> Mildly
+                                abrasive</label>
+                            <label><input type="checkbox" name="abrasiveness" value="Highly abrasive"> Highly
+                                abrasive</label>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="section-title">Type of Bag</div>
-            <div class="radio-group">
-                <label><input type="radio" name="bag_type" value="Paper (Multi-wall)"> Paper (Multi-wall)</label>
-                <label><input type="radio" name="bag_type" value="Plastic / Poly"> Plastic / Poly</label>
-                <label><input type="radio" name="bag_type" value="Woven Polypropylene"> Woven Polypropylene</label>
-                <label><input type="radio" name="bag_type" value="Burlap / Jute"> Burlap / Jute</label>
-            </div>
-        </fieldset>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Flowability:</label>
+                        <div class="radio-group">
+                            <label><input type="checkbox" name="flowability" value="Very free flowing"> Very free
+                                flowing (repose &lt; 30&deg;)</label>
+                            <label><input type="checkbox" name="flowability" value="Free flowing"> Free flowing (repose
+                                30&deg; to 45&deg;)</label>
+                            <label><input type="checkbox" name="flowability" value="Sluggish"> Sluggish (Repose &gt;
+                                45&deg;)</label>
+                        </div>
+                    </div>
+                </div>
 
-        <fieldset>
-            <legend>Station Configuration & Construction</legend>
-            
-            <div class="section-title">Dust Collection Hood Option</div>
-            <div class="radio-group">
-                <label><input type="radio" name="dust_collection" value="Self-contained Fan and Filter"> Self-contained Fan & Filter Unit</label>
-                <label><input type="radio" name="dust_collection" value="Stub for Central Dust Collector"> Stub connection for Central System</label>
-                <label><input type="radio" name="dust_collection" value="None (Hopper Only)"> None (Hopper Only)</label>
-            </div>
+                <div class="form-group">
+                    <label>Characteristics (Check all that apply)</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="characteristics[]" value="Corrosive"> Corrosive</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Explosive"> Explosive</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Packs or smears"> Packs or
+                            smears</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Agglomerates">
+                            Agglomerates</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Hygroscopic"> Hygroscopic</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Friable"> Friable</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Segregates"> Segregates</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Adhesive"> Adhesive</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Cohesive"> Cohesive</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Aerates"> Aerates</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Degrades"> Degrades</label>
+                        <label><input type="checkbox" name="characteristics[]" value="Toxic"> Toxic</label>
+                    </div>
+                </div>
+            </fieldset>
 
-            <div class="section-title">Construction Materials (Contact Surfaces)</div>
-            <div class="radio-group">
-                <label><input type="radio" name="contact_surfaces" value="Carbon Steel"> Carbon Steel</label>
-                <label><input type="radio" name="contact_surfaces" value="304 Stainless Steel"> 304 Stainless Steel</label>
-                <label><input type="radio" name="contact_surfaces" value="316L Stainless Steel"> 316L Stainless Steel</label>
-            </div>
+            <fieldset>
+                <legend>Operating Requirements</legend>
 
-            <div class="section-title">Internal Finish</div>
-            <div class="radio-group">
-                <label><input type="radio" name="internal_finish" value="Standard Mill"> Standard Mill</label>
-                <label><input type="radio" name="internal_finish" value="Food Grade (120 Grit)"> Food Grade (120 Grit)</label>
-                <label><input type="radio" name="internal_finish" value="Sanitary/Dairy (150 Grit)"> Sanitary/Dairy (150 Grit)</label>
-            </div>
-        </fieldset>
+                <div class="form-group">
+                    <label>What is the material contained in? (bag, drum, etc.)</label>
+                    <input type="text" name="material_contained_in">
+                </div>
 
-        <fieldset>
-            <legend>Add-ons & Integrated Equipment</legend>
-            <div class="checkbox-group">
-                <label><input type="checkbox" name="addons[]" value="Integral Empty Bag Compactor"> Integral Empty Bag Compactor</label>
-                <label><input type="checkbox" name="addons[]" value="Integral Lump Breaker"> Integral Lump Breaker at Discharge</label>
-                <label><input type="checkbox" name="addons[]" value="Glove Box Design (Toxic Materials)"> Glove Box Design (For Toxic Materials)</label>
-                <label><input type="checkbox" name="addons[]" value="Vibrator on Hopper"> Vibrator on Hopper</label>
-                <label><input type="checkbox" name="addons[]" value="Safety Grate / Screen"> Safety Grate / Screen</label>
-                <label><input type="checkbox" name="addons[]" value="Magnetic Separator"> Magnetic Separator</label>
-            </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Size:</label>
+                        <input type="text" name="container_size">
+                    </div>
+                    <div class="col form-group">
+                        <label>Weight:</label>
+                        <input type="text" name="container_weight">
+                    </div>
+                </div>
 
-            <div class="section-title">Discharge Connection Feeding To:</div>
-            <div class="radio-group">
-                <label><input type="radio" name="feeding_to" value="Flexible Screw Conveyor"> Flexible Screw Conveyor</label>
-                <label><input type="radio" name="feeding_to" value="Pneumatic Conveying System"> Pneumatic Conveying System</label>
-                <label><input type="radio" name="feeding_to" value="Gravity Drop"> Gravity Drop</label>
-                <label><input type="radio" name="feeding_to" value="Other"> Other</label>
-            </div>
-            <div class="form-group" style="margin-top: 10px;">
-                <label>Hopper Capacity Required (if specific):</label>
-                <input type="text" name="hopper_capacity" placeholder="e.g., 5 cubic feet">
-            </div>
-        </fieldset>
+                <div class="form-group">
+                    <label>What is this discharging into?</label>
+                    <input type="text" name="discharging_into">
+                </div>
 
-        <fieldset>
-            <legend>Environment & Electrical</legend>
-            <div class="row">
-                <div class="col form-group"><label>Motor Volt:</label><input type="text" name="motor_volt"></div>
-                <div class="col form-group"><label>Phase:</label><input type="text" name="motor_phase"></div>
-                <div class="col form-group"><label>Hertz:</label><input type="text" name="motor_hertz"></div>
-            </div>
-            <div class="row" style="margin-top: 15px;">
-                <div class="col form-group"><label>Explosion Proof Class (if applicable):</label><input type="text" name="explosion_proof_class"></div>
-                <div class="col form-group"><label>Division:</label><input type="text" name="explosion_proof_div"></div>
-            </div>
-        </fieldset>
+                <div class="form-group">
+                    <label>What size of opening does the hopper mate with?</label>
+                    <input type="text" name="hopper_mate_size">
+                </div>
 
-        <fieldset>
-            <legend>Additional Requirements</legend>
-            <div class="form-group">
-                <label>Describe Your Process:</label>
-                <textarea name="process_description" rows="4" placeholder="Indicate clearances, headroom restrictions, or specific process requirements..."></textarea>
-            </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Is moisture present?</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="moisture_present" value="Yes"> Yes</label>
+                            <label><input type="checkbox" name="moisture_present" value="No"> No</label>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="form-group" style="margin-top: 25px;">
-                <label>Upload Installation Sketch / Clearances (Plan/Side Elevation):</label>
-                <input type="file" name="installation_sketch" accept=".jpg,.png,.pdf,.doc,.docx">
-            </div>
-        </fieldset>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Is a slide gate required?</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="slide_gate_required" value="Yes"> Yes</label>
+                            <label><input type="checkbox" name="slide_gate_required" value="No"> No</label>
+                        </div>
+                    </div>
+                </div>
 
-        <button type="submit" class="btn-submit">Submit Quotation Request</button>
-    </form>
-</div>
+                <div class="row">
+                    <div class="col form-group"><label>Duty Cycle (Hours per day):</label><input type="number"
+                            name="duty_hours_per_day"></div>
+                    <div class="col form-group"><label>Duty Cycle (Days per week):</label><input type="number"
+                            name="duty_days_per_week"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Mode:</label>
+                    <div>
+                        <label><input type="checkbox" name="mode_continuous"> Continuous / Non-stop delivery at</label>
+                        <input type="text" name="continuous_lbs_per_hour" placeholder="lbs. per hour">
+                    </div>
+
+                    <div>
+                        <label><input type="checkbox" name="mode_intermittent"> Intermittent / Batch</label>
+
+                        <div class="row">
+                            <div class="col form-group">
+                                <label>Batch amount</label>
+                                <input type="text" name="batch_amount">
+                            </div>
+                            <div class="col form-group">
+                                <label>Time to deliver batch:</label>
+                                <input type="text" name="time_to_deliver_batch">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Idle time between batches</label>
+                            <input type="text" name="idle_time_between_batches">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Construction</legend>
+
+                <div class="form-group">
+                    <label>Contact Surfaces:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="contact_surfaces[]" value="Carbon steel"> Carbon
+                            steel</label>
+                        <label><input type="checkbox" name="contact_surfaces[]" value="Stainless steel (304)"> Stainless
+                            steel (304)</label>
+                        <label><input type="checkbox" name="contact_surfaces[]" value="Stainless steel (316L)">
+                            Stainless steel (316L)</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Non-contact surfaces:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="non_contact_surfaces[]" value="Carbon steel"> Carbon
+                            steel</label>
+                        <label><input type="checkbox" name="non_contact_surfaces[]" value="Stainless steel (304)">
+                            Stainless steel (304)</label>
+                        <label><input type="checkbox" name="non_contact_surfaces[]" value="Stainless steel (316L)">
+                            Stainless steel (316L)</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Internal Finish:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="internal_finish[]" value="Standard"> Standard (primary mill
+                            finish)</label>
+                        <label><input type="checkbox" name="internal_finish[]" value="Food Grade"> Food Grade (to 120
+                            grit)</label>
+                        <label><input type="checkbox" name="internal_finish[]" value="Sanitary"> Sanitary (to 150
+                            grit)</label>
+                        <label><input type="checkbox" name="internal_finish[]" value="Dairy"> Dairy</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>External Paint (Carbon steel only):</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="external_paint[]" value="White enamel"> White enamel</label>
+                        <label><input type="checkbox" name="external_paint[]" value="Blue enamel"> Blue enamel</label>
+                        <label><input type="checkbox" name="external_paint[]" value="Steel-it"> Steel-it</label>
+                        <label><input type="checkbox" name="external_paint[]" value="Epoxy"> Epoxy (Specify color)
+                            <input type="text" name="epoxy_color"></label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Electrical</legend>
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Plant Service (Volt / 3 Phase):</label>
+                        <input type="text" name="plant_service_volt">
+                    </div>
+                    <div class="col form-group">
+                        <label>Hertz:</label>
+                        <input type="text" name="plant_service_hertz">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Air (CFM):</label>
+                        <input type="text" name="air_cfm">
+                    </div>
+                    <div class="col form-group">
+                        <label>Air (PSI):</label>
+                        <input type="text" name="air_psi">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Blower:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="blower[]" value="Dry"> Dry</label>
+                        <label><input type="checkbox" name="blower[]" value="Wet / Washdown"> Wet / Washdown</label>
+                        <label><input type="checkbox" name="blower[]" value="Explosion Proof"> Explosion Proof - List
+                            Class, Group & Div.: <input type="text" name="blower_explosion_proof_details"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Controls:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="controls[]" value="Dry"> Dry</label>
+                        <label><input type="checkbox" name="controls[]" value="Wet / Washdown"> Wet / Washdown</label>
+                        <label><input type="checkbox" name="controls[]" value="Explosion Proof"> Explosion Proof - List
+                            Class, Group & Div.: <input type="text" name="controls_explosion_proof_details"></label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Additional Requirements</legend>
+                <div class="form-group">
+                    <label>Describe Your Process:</label>
+                    <textarea name="process_description" rows="4" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group" style="margin-top: 25px;">
+                    <label>Upload Installation Sketch / Clearances (Plan/Side Elevation):</label>
+                    <input type="file" name="installation_sketch" accept=".jpg,.png,.pdf,.doc,.docx">
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
 
 </body>
+
 </html>

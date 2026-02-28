@@ -162,6 +162,56 @@
         .checkbox-group label {
             display: block;
         }
+
+        /* ===== Responsive Fix ===== */
+
+        /* Tablets */
+        @media (max-width: 992px) {
+            .checkbox-group {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 576px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .col {
+                min-width: 100%;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+                /* Stack vertically */
+            }
+
+            .checkbox-group label {
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="date"],
+            input[type="number"],
+            select,
+            textarea {
+                font-size: 16px;
+                /* Prevents zoom on iPhone */
+            }
+        }
     </style>
 </head>
 
@@ -533,7 +583,8 @@
                     <div class="col form-group"><label>If H: Y1=</label><input type="text" name="config_y1"></div>
                 </div>
                 <div class="sketch-container">
-                    <img src="./images/flexible-conveyer-sketch.JPG" alt="Flexible Conveyor Dimensions Sketch" class="sketch-image">
+                    <img src="./images/flexible-conveyer-sketch.JPG" alt="Flexible Conveyor Dimensions Sketch"
+                        class="sketch-image">
                     <p class="sketch-caption">Reference Sketch for Dimensions (X, Y, X1, Y1, CL)</p>
                 </div>
             </fieldset>
@@ -542,8 +593,7 @@
                 <legend>Additional Requirements</legend>
                 <div class="form-group">
                     <label>Describe Your Process:</label>
-                    <textarea name="process_description" rows="5"
-                        placeholder=""></textarea>
+                    <textarea name="process_description" rows="5" placeholder=""></textarea>
                 </div>
 
                 <div class="form-group" style="margin-top: 25px;">
